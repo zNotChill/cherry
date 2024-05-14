@@ -16,43 +16,49 @@ function readFile(file: string) {
   }
 
   keys.forEach(key => {
-    const skript = new Skript({
-      outputDirectory: "",
-      inputDirectory: "",
-    });
-    skript.currentCodeBlock = "";
-    
-    // way easier than listing out every class...
-    const className = importedFile[key].constructor.name;
-    const classConstructor = Classes[className as keyof typeof Classes];
-
-    let arg1, arg2;
-    if (classConstructor) {
-      const imp = Object.keys(importedFile[key]);
-      arg1 = imp[0];
-      arg2 = imp[1];
-
-      if (arg1 && arg2) {
-        const constructor = new classConstructor(importedFile[key][arg1], importedFile[key][arg2]);
-        skript.currentCodeBlock = constructor.getLineStarter() + "\n";
-      
-        constructor.skript = skript;
-        currentSkript = skript;
-
-        skript.addIndent();
-
-        const callback = constructor.runCallback();
-
-        skript.convert();
-      }
-    }
-
-    console.log(skript.currentCodeBlock);
+    parseCodeBlock(importedFile, key);
   });
 
   
 
   return importedFile;
+}
+
+export function parseCodeBlock(importedFile: any, key: string) {
+  const skript = new Skript({
+    outputDirectory: "",
+    inputDirectory: "",
+  });
+  skript.currentCodeBlock = "";
+  
+  // way easier than listing out every class...
+  const className = importedFile[key].constructor.name;
+  const classConstructor = Classes[className as keyof typeof Classes];
+
+  let arg1, arg2;
+  if (classConstructor) {
+    const imp = Object.keys(importedFile[key]);
+    arg1 = imp[0];
+    arg2 = imp[1];
+
+    if (arg1 && arg2) {
+      const constructor = new classConstructor(importedFile[key][arg1], importedFile[key][arg2]);
+      skript.currentCodeBlock = constructor.getLineStarter() + "\n";
+    
+      constructor.skript = skript;
+      currentSkript = skript;
+
+      skript.addIndent();
+
+      const callback = constructor.runCallback();
+
+      skript.convert();
+    }
+  }
+
+  console.log(skript.currentCodeBlock);
+  
+
 }
 
 readFile("./scripts/Core.js");
