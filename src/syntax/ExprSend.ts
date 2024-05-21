@@ -1,5 +1,4 @@
 import { currentSkript } from "../Parser";
-import { Skript } from "../core/Skript";
 import Expressions from "../core/classes/Expressions";
 import SkriptEntity from "../core/interfaces/SkriptEntity";
 

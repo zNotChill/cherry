@@ -2,15 +2,20 @@
 import * as send from "../syntax/ExprSend";
 import * as wait from "../syntax/ExprWait";
 import * as set from "../syntax/ExprSetVariable";
+import * as setAttribute from "../syntax/ExprSetValue";
 import QueueItem from "./interfaces/Queue";
 
 // This function is initialized for *EACH* event that is registered
 // may be a bad approach, but it works for now
 export class Skript {
+  
   send: typeof send.default;
   wait: typeof wait.default;
   variable: typeof set.default;
   var: typeof set.default;
+  set: typeof setAttribute.default;
+
+
   private queue: QueueItem[];
   indentLevel: number;
   currentCodeBlock: string;
@@ -23,6 +28,8 @@ export class Skript {
 
     this.variable = set.default;
     this.var = set.default;
+
+    this.set = setAttribute.default;
 
     this.queue = [];
     this.indentLevel = config.indentLevel || 0;

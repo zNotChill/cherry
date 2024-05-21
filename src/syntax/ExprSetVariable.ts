@@ -10,9 +10,9 @@ import { parseType } from "../core/lib/Types";
  * @param value The value to set the variable to.
  * @param options Options for the set statement.
  * @example
- * $.set("test", 1, "local") // => "set {_test} to 1"
- * $.set("test", "hello", ["temp"]) // => "set {-test} to "hello"
- * $.set("test", "hello", ["global"]) // => "set {test} to "hello"
+ * $.var("test", 1, "local") // => "set {_test} to 1"
+ * $.var("test", "hello", ["temp"]) // => "set {-test} to "hello"
+ * $.var("test", "hello", ["global"]) // => "set {test} to "hello"
  */
 function set(variable: string, value: any, options: string[] = ["global"]) {
   let type = parseType(value);

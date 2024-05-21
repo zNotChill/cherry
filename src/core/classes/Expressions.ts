@@ -44,4 +44,50 @@ export default class Expressions {
     toString: () => "event-world",
     toSkriptString: () => "%event-world%"
   }
+  static Arg1 = {
+    toString: () => "arg1",
+    toSkriptString: () => "%arg1%"
+  }
+  static Arg2 = {
+    toString: () => "arg2",
+    toSkriptString: () => "%arg2%"
+  }
+  static Arg3 = {
+    toString: () => "arg3",
+    toSkriptString: () => "%arg3%"
+  }
+  static Arg4 = {
+    toString: () => "arg4",
+    toSkriptString: () => "%arg4%"
+  }
+  static Arg5 = {
+    toString: () => "arg5",
+    toSkriptString: () => "%arg5%"
+  }
+  static Arg6 = {
+    toString: () => "arg6",
+    toSkriptString: () => "%arg6%"
+  }
+  static Arg7 = {
+    toString: () => "arg7",
+    toSkriptString: () => "%arg7%"
+  }
+  static Arg8 = {
+    toString: () => "arg8",
+    toSkriptString: () => "%arg8%"
+  }
+  static Arg9 = {
+    toString: () => "arg9",
+    toSkriptString: () => "%arg9%"
+  }
+  static Arg10 = {
+    toString: () => "arg10",
+    toSkriptString: () => "%arg10%"
+  } // really? 10 args?
+
+  static AllPlayers = {
+    toString: () => "all players",
+    toSkriptString: () => "%all players%",
+    plural: true
+  }
 }
