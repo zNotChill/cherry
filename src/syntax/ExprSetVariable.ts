@@ -1,7 +1,4 @@
 import { currentSkript } from "../Parser";
-import { Skript } from "../core/Skript";
-import Expressions from "../core/classes/Expressions";
-import SkriptEntity from "../core/interfaces/SkriptEntity";
 import { parseType } from "../core/lib/Types";
 
 /**
@@ -10,7 +7,7 @@ import { parseType } from "../core/lib/Types";
  * @param value The value to set the variable to.
  * @param options Options for the set statement.
  * @example
- * $.var("test", 1, "local") // => "set {_test} to 1"
+ * $.var("test", 1, ["local"]) // => "set {_test} to 1"
  * $.var("test", "hello", ["temp"]) // => "set {-test} to "hello"
  * $.var("test", "hello", ["global"]) // => "set {test} to "hello"
  */

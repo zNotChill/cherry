@@ -4,6 +4,9 @@ import * as wait from "../syntax/ExprWait";
 import * as set from "../syntax/ExprSetVariable";
 import * as setAttribute from "../syntax/ExprSetValue";
 import QueueItem from "./interfaces/Queue";
+import { SkBee } from "./addons/SkBee";
+
+const skbee = new SkBee();
 
 // This function is initialized for *EACH* event that is registered
 // may be a bad approach, but it works for now
@@ -14,12 +17,13 @@ export class Skript {
   variable: typeof set.default;
   var: typeof set.default;
   set: typeof setAttribute.default;
-
+  raytraceFromEntity: typeof skbee.raytraceFromEntity;
 
   private queue: QueueItem[];
   indentLevel: number;
   currentCodeBlock: string;
   registeredEvents: string[];
+  silent: boolean;
 
   constructor(config: SkriptConfig) {
     this.send = send.default;
@@ -31,10 +35,15 @@ export class Skript {
 
     this.set = setAttribute.default;
 
+    // SkBee
+    this.raytraceFromEntity = skbee.raytraceFromEntity;
+    // 
+
     this.queue = [];
     this.indentLevel = config.indentLevel || 0;
     this.currentCodeBlock = "";
     this.registeredEvents = [];
+    this.silent = config.silent || false;
   }
 
   addIndent() {
@@ -46,6 +55,10 @@ export class Skript {
   }
 
   registerEvent(event: string) {
+    console.log(`Registered event: ${event} ${this.silent}`);
+    if(this.silent) return;
+
+    
     this.registeredEvents.push(event);
   }
 
@@ -69,6 +82,7 @@ export interface SkriptConfig {
   filesToIgnore?: string[],
   enabledAddons?: SkriptAddons[],
   indentLevel?: number,
+  silent?: boolean
 }
 
 export type SkriptAddons = [

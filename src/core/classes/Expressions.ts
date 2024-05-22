@@ -91,3 +91,9 @@ export default class Expressions {
     plural: true
   }
 }
+
+export interface Expression {
+  toString: () => string,
+  toSkriptString: () => string,
+  plural?: boolean
+}

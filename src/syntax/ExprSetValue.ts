@@ -1,7 +1,8 @@
 import { currentSkript } from "../Parser";
 import { Skript } from "../core/Skript";
-import Expressions from "../core/classes/Expressions";
-import SkriptEntity from "../core/interfaces/SkriptEntity";
+import Expressions, { Expression } from "../core/classes/Expressions";
+import SkriptEntity from "../core/interfaces/Entity";
+import { ClassType } from "../core/interfaces/Types";
 import { parseType } from "../core/lib/Types";
 
 /**
@@ -10,7 +11,11 @@ import { parseType } from "../core/lib/Types";
  * @param value The value to set the attribute to.
  * @param replacement The replacement for the attribute. (if it's a player attribute/any attribute with different names for different entities)
  */
-function set(attr: string, value: any, replacement: any = "player") {
+function set(attr: any, value: any, replacement: Expression = {
+  toString: () => "player",
+  toSkriptString: () => "%player%",
+  plural: false
+}) {
   let type = parseType(value);
   let quotes = type.type === "string" ? '"' : "";
 

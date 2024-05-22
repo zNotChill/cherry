@@ -1,7 +1,5 @@
 import { Skript } from "./core/Skript";
 import Classes from "./core/classes/Classes";
-import EventListener from "./core/classes/EventListener";
-import Periodical from "./core/classes/Periodical";
 
 const { CherryError } = require("./ErrorHandler");
 
@@ -18,9 +16,6 @@ function readFile(file: string) {
   keys.forEach(key => {
     parseCodeBlock(importedFile, key);
   });
-
-  
-
   return importedFile;
 }
 
@@ -30,6 +25,12 @@ export function parseCodeBlock(importedFile: any, key: string) {
     inputDirectory: "",
   });
   skript.currentCodeBlock = "";
+
+  const silentSkript = new Skript({
+    outputDirectory: "",
+    inputDirectory: "",
+    silent: true
+  });
   
   // way easier than listing out every class...
   const className = importedFile[key].constructor.name;

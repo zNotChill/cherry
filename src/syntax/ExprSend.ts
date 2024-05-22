@@ -1,6 +1,6 @@
 import { currentSkript } from "../Parser";
 import Expressions from "../core/classes/Expressions";
-import SkriptEntity from "../core/interfaces/SkriptEntity";
+import SkriptEntity from "../core/interfaces/Entity";
 
 function send(message: string, recipient: SkriptEntity, formatted: boolean = false) {
   const str = `send${formatted ? " formatted" : ""} "${message}" to ("${recipient.name || recipient.id || "unknown"}" parsed as offline player)`;

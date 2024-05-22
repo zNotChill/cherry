@@ -10,3 +10,16 @@ export function parseType(value: any) {
 
   return { type: "raw", value };
 }
+
+export function typeReplace(attr: string, replacement: any) {
+  if (replacement.toString() !== "player") {
+    let rep = replacement.toString();
+
+    if (replacement.plural) {
+      attr = attr.replace("'s", "");
+      rep += "'";
+    }
+    attr = attr.replace("player", rep);
+  }
+  return attr;
+}
