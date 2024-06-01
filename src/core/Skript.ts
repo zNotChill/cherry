@@ -55,7 +55,7 @@ export class Skript {
   }
 
   registerEvent(event: string) {
-    console.log(`Registered event: ${event} ${this.silent}`);
+    // console.log(`Registered event: ${event} ${this.silent}`);
     if(this.silent) return;
 
     

@@ -47,6 +47,7 @@ export function parseCodeBlock(importedFile: any, key: string) {
       skript.currentCodeBlock = constructor.getLineStarter() + "\n";
     
       constructor.skript = skript;
+      constructor.silentSkript = silentSkript;
       currentSkript = skript;
 
       skript.addIndent();

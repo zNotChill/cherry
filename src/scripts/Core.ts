@@ -7,7 +7,7 @@ import { Player } from "../core/interfaces/PlayerAttribute";
 export const test = new Periodical("1 second", ($, silent) => {
   $.set(Player.Gamemode, Gamemode.Creative, Expressions.AllPlayers);
 
-  silent.raytraceFromEntity({
+  $.raytraceFromEntity({
     entity: Expressions.AllPlayers,
     maxDistance: 10,
     raySize: 1,
