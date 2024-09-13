@@ -8,5 +8,11 @@
         "dev": "npx tsc && node ./dist/Parser.js"
     },
     "author": "koloja & chxll",
-    "license": "MIT"
+    "license": "MIT",
+    "dependencies": {
+        "typescript": "^5.5.4"
+    },
+    "devDependencies": {
+        "@types/node": "^22.5.4"
+    }
 }

@@ -5,6 +5,7 @@ import * as set from "../syntax/ExprSetVariable";
 import * as setAttribute from "../syntax/ExprSetValue";
 import QueueItem from "./interfaces/Queue";
 import { SkBee } from "./addons/SkBee";
+import checkIf from "../syntax/CondIf";
 
 const skbee = new SkBee();
 
@@ -18,6 +19,8 @@ export class Skript {
   var: typeof set.default;
   set: typeof setAttribute.default;
   raytraceFromEntity: typeof skbee.raytraceFromEntity;
+
+  checkIf: typeof checkIf.default;
 
   private queue: QueueItem[];
   indentLevel: number;
